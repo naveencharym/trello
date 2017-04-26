@@ -1,6 +1,8 @@
 # trello
 trello project repo
 
+* Used Django 1.8 Version
+
 *** Run following command at the command prompt ***
 
 * python manage.py makemigrations
