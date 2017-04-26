@@ -1,0 +1,38 @@
+<div class="col-md-4 card custom-card-bg" style="width: 25%;margin-left: 100px;padding-top: 10px;margin-top: 20px;cursor: pointer">
+    <div class="card-block" style="min-height: 5%;text-align: center" id="create-board-link">
+        <a href="#" class="btn carete-new-board" id="taskCreate" style="color:#ffffff">Add alist ...</a>
+    </div>
+    <div class="container" id="board-creation-form" style="display: none">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+
+
+                    <div class="panel-body">
+                        <form role="form">
+                            {% csrf_token %}
+                            <div class="form-group">
+
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="taskName" placeholder="Add a list.." autofocus />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <a href="#" class="btn btn-success btn-sml " role="button" id="task-create">Create</a>
+                                <a href="#" class="btn btn-success btn-sml " role="button" id="task-create-cancel"><span class="glyphicon glyphicon-remove"></span></a>
+
+                            </div>
+
+
+
+
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

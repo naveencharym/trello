@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{%static 'board/styless.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+{% include "header.html" %}
+
+
+
+{% if all_boards %}
+    <h1 style="padding-bottom: 2px">Avilable boards</h1>
+
+     <div class="row" >
+        {% for board in all_boards %}
+
+                <div class="col-md-4 card custom-card-bg" style="width: 25%;margin-left: 100px;padding-top: 10px;margin-top: 20px;cursor: pointer">
+                    <div class="card-block" style="height: 10%;text-align: center">
+                        <a href="/board/{{ board.name}}" class="boardref">  <h4 class="card-title" style="color: #ffffff"><strong>{{ board.name }}</strong></h4></a>
+                         <p class="btn" id="{{ board.name }}" onclick="deletBoard(this.id)"><span class="glyphicon glyphicon-trash"></span></p>
+                    </div>
+                </div>
+
+
+        {% endfor %}
+         {% include "board/boardCreationTemp.html" %}
+
+
+     </div>
+
+    <div>
+
+    </div>
+
+{% else %}
+    <h3>you dont have any boards</h3>
+    {% include "board/boardCreationTemp.html" %}
+{% endif %}
+
+<script src="{% static 'board/boardsjs.js' %}"></script>

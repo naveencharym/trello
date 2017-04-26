@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{%static 'board/styless.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+{% include "header.html" %}
+
+
+<div style="padding-top: 5%;padding-left:5%;color: #ffffff;background-color: #0079BF" class="row" id="boardName"><strong>{{ name }}</strong></div>
+
+{% if boardLists.all_lists|length > 0 %}
+<div class="row" >
+        {% for list in boardLists.all_lists %}
+                {% for taskName,cards in list.items %}
+                    <div class="col-md-4 card custom-task-card-bg" style="width: 25%;margin-left: 100px;padding-top: 10px;margin-top: 20px;cursor: pointer;background-color: red">
+                        <div class="card-block" style="height: 10%;text-align: center">
+                            <a href="#" class="boardref" id="addCard">  <h4 class="card-title" style="color: black"><strong>{{taskName}}</strong></h4></a>
+                        </div>
+                        {% if cards|length > 0 %}
+                            {% for card in cards %}
+                                <div class="card custom-style-for-card">
+                               {{ card }}
+                                    <p class="btn" id="{{card }}" onclick="deleteCard(this.id)"><span class="glyphicon glyphicon-trash"></span></p>
+
+
+
+                                </div>
+
+
+                            {% endfor %}
+                        {% endif %}
+                        {% include "board/cardCreationTemp.html" %}
+
+                    </div>
+                {% endfor %}
+
+
+        {% endfor %}
+
+         {% include "board/listCreationtemp.html" %}
+
+</div>
+{% else %}
+ <div class="row" >
+        {% include "board/listCreationtemp.html" %}
+ </div>
+
+
+
+{% endif %}
+
+<script src="{% static 'board/listjs.js' %}"></script>
